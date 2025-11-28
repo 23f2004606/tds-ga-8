@@ -1,5 +1,9 @@
 ---
 marp: true
+paginate: true
+class: lead
+---
+marp: true
 theme: custom-theme
 paginate: true
 footer: "© 2025 Software Documentation | 23f2004606@ds.study.iitm.ac.in"
