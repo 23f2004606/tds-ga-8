@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q4 Earnings — Interactive Reveal.js Presentation</title>
+
+  <!-- RevealJS core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
+
+  <!-- Highlight.js (code syntax) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+
+  <style>
+    /* subtle footer */
+    .footer-email {
+      position: absolute;
+      right: 1rem;
+      bottom: 0.5rem;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+    pre code { font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Title slide -->
+      <section>
+        <h1>Quarterly Earnings — Q4</h1>
+        <h3>Technical & Financial Summary</h3>
+        <p class="fragment">Prepared by: Technical Consulting, Financial Institution</p>
+        <p class="fragment">Contact: <strong>23f2004606@ds.study.iitm.ac.in</strong></p>
+        <p class="footer-email">23f2004606@ds.study.iitm.ac.in</p>
+        <aside class="notes">
+          Welcome stakeholders. Quick intro, who we are and how to reach us (email shown on slide).
+        </aside>
+      </section>
+
+      <!-- Markdown slide (uses Reveal's markdown plugin) -->
+      <section data-markdown>
+        <script type="text/template">
+### Highlights (Markdown)
+
+- **Revenue growth:** 6.2% QoQ
+- **Net Income:** $1.2B (+3% YoY)
+- **Key drivers:** Product uptake, cost optimization
+
+> Next steps: Operationalize model improvements and monitor client retention.
+
+*This slide is written in Markdown — easy to edit and maintain.*
+        </script>
+        <aside class="notes">
+          Read through bullet points. Point out markdown ease-of-editing for business owners.
+        </aside>
+      </section>
+
+      <!-- Fragment animations slide -->
+      <section>
+        <h2>Interactive Walkthrough</h2>
+        <ol>
+          <li class="fragment" data-fragment-index="1">Market trends observed</li>
+          <li class="fragment" data-fragment-index="2">Top-performing product lines</li>
+          <li class="fragment" data-fragment-index="3">Opportunities & Risks</li>
+        </ol>
+        <aside class="notes">
+          Use fragments to reveal points step-by-step during presentation. Pause after each item for questions.
+        </aside>
+      </section>
+
+      <!-- Code sample with syntax highlighting -->
+      <section>
+        <h2>Example: Simple Revenue Forecast (Python)</h2>
+        <pre><code class="language-python"># Simple linear forecast example
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# historical quarters (1..8) and revenue in $M
+X = np.array([[1],[2],[3],[4],[5],[6],[7],[8]])
+y = np.array([100,105,110,115,118,120,123,127])
+
+model = LinearRegression().fit(X, y)
+next_q = np.array([[9]])
+print(f"Forecast revenue (Q9): ${model.predict(next_q)[0]:.2f}M")
+</code></pre>
+        <aside class="notes">
+          Explain this quick forecasting snippet: linear baseline model, not a production model. Good to demonstrate code-integration capability.
+        </aside>
+      </section>
+
+      <!-- Mathematical equations slide -->
+      <section>
+        <h2>Key Financial Formulas</h2>
+        <p>Free Cash Flow (FCF):</p>
+        <p class="fragment">\[\text{FCF} = \text{Operating Cash Flow} - \text{Capital Expenditures}\]</p>
+
+        <p>Discounted Cash Flow (DCF) — terminal value (Gordon Growth):</p>
+        <p class="fragment">\[\text{TV} = \dfrac{FCF_{n+1}}{r - g}\]</p>
+
+        <p class="fragment">Where: \(r\) = discount rate, \(g\) = perpetual growth rate.</p>
+        <aside class="notes">
+          Walk through the DCF intuition and the sensitivity to discount rate r. Use this to highlight assumptions for valuation.
+        </aside>
+      </section>
+
+      <!-- Closing slide with call to action -->
+      <section>
+        <h2>Questions & Next Steps</h2>
+        <ul>
+          <li class="fragment">Deep-dive analytics with dataset access</li>
+          <li class="fragment">Rollout roadmap for automation</li>
+          <li class="fragment">Request: stakeholder feedback via email</li>
+        </ul>
+        <p>Contact: <strong>23f2004606@ds.study.iitm.ac.in</strong></p>
+        <aside class="notes">
+          Encourage stakeholders to send data access requests or questions to the provided email. Offer 1:1 follow-ups.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js and plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/markdown/markdown.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/math/math.js"></script>
+  <!-- Add the Reveal.js highlight plugin so RevealHighlight is defined -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/highlight/highlight.js"></script>
+  <!-- Highlight.js library (used by the plugin) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+  <script>
+    // Initialize Reveal with the correct plugins. RevealHighlight is provided by the highlight plugin.
+    Reveal.initialize({
+      hash: true,
+      plugins: [ RevealMarkdown, RevealNotes, RevealMath, RevealHighlight ],
+      math: {
+        // mathjax configuration (use default CDN)
+        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+      },
+      // highlight integration: the plugin will auto-run highlight.js on code blocks
+      highlight: {
+        highlightOnLoad: true
+      }
+    });
+  </script>
+</body>
+</html>
