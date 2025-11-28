@@ -1,0 +1,91 @@
+---
+marp: true
+theme: custom-theme
+paginate: true
+footer: "© 2025 Software Documentation | 23f2004606@ds.study.iitm.ac.in"
+---
+
+<!--
+Custom Marp theme
+Place this inside the same Markdown file while using Marp CLI
+-->
+
+<style>
+section {
+  font-family: "Segoe UI", sans-serif;
+}
+
+h1 {
+  color: #1a73e8;
+}
+
+.custom-box {
+  padding: 16px;
+  border-radius: 10px;
+  background: #e8f0fe;
+  border: 2px solid #1a73e8;
+  font-size: 1.1rem;
+}
+
+img.bg {
+  opacity: 0.3;
+}
+</style>
+
+<!-- Custom Theme Definition -->
+<style id="custom-theme">
+:root {
+  --background-color: #ffffff;
+  --text-color: #222;
+  --accent-color: #1a73e8;
+}
+section {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+h1, h2, h3 {
+  color: var(--accent-color);
+}
+</style>
+
+---
+
+# Product Documentation  
+## Technical Overview  
+**Author:** 23f2004606@ds.study.iitm.ac.in
+
+---
+
+# Introduction
+
+This presentation demonstrates maintainable, version-controlled documentation using **Marp**, convertible to:
+
+- PDF (via Marp CLI / GitHub CI)
+- HTML
+- PPTX  
+- GitHub Pages hosting
+
+---
+
+<!-- Background image slide -->
+<!-- Replace URL with an image in your repo or a direct raw URL -->
+![bg](https://images.unsplash.com/photo-1527443154391-507e9dc6c5cc)
+
+# System Architecture Overview
+
+This slide includes a **background image**, as required.
+
+---
+
+# Code Example
+
+```python
+def process_data(items):
+    return [item * 2 for item in items]
+Algorithmic Complexity
+
+For an algorithm processing input size \(n\):
+
+T(n) = n^2 + 3n + 2 = O(n^2) \\] Another example: \\[ f(n) = \log(n) + n\log(n) \\] --- # Custom Styled Block <div class="custom-box"> This is a custom-styled box using Marp CSS. Useful for alerts, warnings, or highlights. </div> --- # Conclusion - Fully version-controlled documentation - Convertible to HTML/PDF/PPTX - Customizable themes - Great for software product documentation **Contact:** 23f2004606@ds.study.iitm.ac.in ``` --- # ✅ **Where to host this** Create a GitHub repo: ``` my-marp-docs ``` Add `slides.md` (the file above). You can then convert using: ``` marp slides.md --pdf marp slides.md --html marp slides.md --pptx ``` --- # ❓ What is the Raw GitHub URL? Once uploaded, the raw URL will be: ``` https://raw.githubusercontent.com/[USER]/[REPO]/main/slides.md ``` For example, if your username is `rahul-dev` and repo is `my-marp-docs`: ``` https://raw.githubusercontent.com/rahul-dev/my-marp-docs/main/slides.md ``` --- If you want, I can: ✅ Generate a GitHub Actions workflow to automatically export PDFs ✅ Build a full folder structure with themes, assets, and CI ✅ Add a separate theme CSS file instead of inline styles Just say **“set up GitHub Actions”** or **“make repo structure”**.
+
+print(process_data([1, 2, 3]))
