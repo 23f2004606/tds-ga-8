@@ -44,6 +44,7 @@ h1, h2, h3 {
 </style>
 
 ---
+<!-- paginate: true -->
 # Product Documentation
 ## Technical Overview
 **Author:** 23f2004606@ds.study.iitm.ac.in
@@ -108,3 +109,4 @@ Useful for highlights or important notes.
 - Ideal for maintainable software product docs
 
 **Contact:** 23f2004606@ds.study.iitm.ac.in
+
