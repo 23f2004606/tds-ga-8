@@ -3,25 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Q4 Earnings — Interactive Reveal.js Presentation</title>
+  <title>Quarterly Earnings — Interactive Reveal.js Presentation</title>
 
-  <!-- RevealJS core -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/black.css" id="theme">
+  <!-- Reveal.js core (from unpkg CDN) -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4/dist/theme/black.css" id="theme">
 
-  <!-- Highlight.js (code syntax) -->
+  <!-- Highlight.js for code highlighting -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
 
+  <!-- Optional: KaTeX for math rendering (Reveal.js math plugin uses KaTeX) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+
   <style>
-    /* subtle footer */
-    .footer-email {
+    /* Small footer with contact */
+    .contact-footer {
       position: absolute;
-      right: 1rem;
-      bottom: 0.5rem;
-      font-size: 0.8rem;
-      opacity: 0.8;
+      bottom: 12px;
+      right: 18px;
+      font-size: 0.85rem;
+      opacity: 0.85;
     }
-    pre code { font-size: 0.9rem; }
   </style>
 </head>
 <body>
@@ -31,93 +33,86 @@
 
       <!-- Title slide -->
       <section>
-        <h1>Quarterly Earnings — Q4</h1>
-        <h3>Technical & Financial Summary</h3>
-        <p class="fragment">Prepared by: Technical Consulting, Financial Institution</p>
-        <p class="fragment">Contact: <strong>23f2004606@ds.study.iitm.ac.in</strong></p>
-        <p class="footer-email">23f2004606@ds.study.iitm.ac.in</p>
+        <h1>Q3 2025 Quarterly Earnings</h1>
+        <h3>Financial Institution — Technical Presentation</h3>
+        <p class="contact-footer">Contact: 23f2004606@ds.study.iitm.ac.in</p>
         <aside class="notes">
-          Welcome stakeholders. Quick intro, who we are and how to reach us (email shown on slide).
+          Introduce yourself and the scope: revenue highlights, expenses, guidance, and Q&A.
         </aside>
       </section>
 
-      <!-- Markdown slide (uses Reveal's markdown plugin) -->
+      <!-- Markdown slide (uses plugin) -->
       <section data-markdown>
-        <script type="text/template">
-### Highlights (Markdown)
+        <textarea data-template>
+## Executive Summary (Markdown slide)
 
-- **Revenue growth:** 6.2% QoQ
-- **Net Income:** $1.2B (+3% YoY)
-- **Key drivers:** Product uptake, cost optimization
+- **Revenue:** \$X million (YoY +Y%)
+- **Net Income:** \$Z million
+- **Key drivers:** Loan growth, fee income, cost control
 
-> Next steps: Operationalize model improvements and monitor client retention.
+> This slide demonstrates using **Markdown** inside Reveal.js.
 
-*This slide is written in Markdown — easy to edit and maintain.*
-        </script>
+</textarea>
+      </section>
+
+      <!-- Slide with animated fragments -->
+      <section>
+        <h2>Top 3 Takeaways</h2>
+        <ul>
+          <li class="fragment">Takeaway 1 — Strong net interest income</li>
+          <li class="fragment">Takeaway 2 — Costs under control; efficiency improved</li>
+          <li class="fragment">Takeaway 3 — Capital ratios remain robust</li>
+        </ul>
         <aside class="notes">
-          Read through bullet points. Point out markdown ease-of-editing for business owners.
+          Reveal bullets one-by-one with fragments. Pause after each and expand with examples.
         </aside>
       </section>
 
-      <!-- Fragment animations slide -->
+      <!-- Slide with code sample -->
       <section>
-        <h2>Interactive Walkthrough</h2>
-        <ol>
-          <li class="fragment" data-fragment-index="1">Market trends observed</li>
-          <li class="fragment" data-fragment-index="2">Top-performing product lines</li>
-          <li class="fragment" data-fragment-index="3">Opportunities & Risks</li>
-        </ol>
-        <aside class="notes">
-          Use fragments to reveal points step-by-step during presentation. Pause after each item for questions.
-        </aside>
-      </section>
+        <h2>Sample: Simple Revenue Growth Calculation (Python)</h2>
+        <pre><code class="hljs language-python">def revenue_growth(prev, curr):
+    """Return revenue growth rate as a percentage."""
+    if prev == 0:
+        return None
+    return (curr - prev) / prev * 100
 
-      <!-- Code sample with syntax highlighting -->
-      <section>
-        <h2>Example: Simple Revenue Forecast (Python)</h2>
-        <pre><code class="language-python"># Simple linear forecast example
-import numpy as np
-from sklearn.linear_model import LinearRegression
-
-# historical quarters (1..8) and revenue in $M
-X = np.array([[1],[2],[3],[4],[5],[6],[7],[8]])
-y = np.array([100,105,110,115,118,120,123,127])
-
-model = LinearRegression().fit(X, y)
-next_q = np.array([[9]])
-print(f"Forecast revenue (Q9): ${model.predict(next_q)[0]:.2f}M")
+print(revenue_growth(120_000_000, 135_000_000))  # => 12.5
 </code></pre>
         <aside class="notes">
-          Explain this quick forecasting snippet: linear baseline model, not a production model. Good to demonstrate code-integration capability.
+          Explain that this snippet shows the simple growth formula used in our internal models.
         </aside>
       </section>
 
       <!-- Mathematical equations slide -->
       <section>
-        <h2>Key Financial Formulas</h2>
-        <p>Free Cash Flow (FCF):</p>
-        <p class="fragment">\[\text{FCF} = \text{Operating Cash Flow} - \text{Capital Expenditures}\]</p>
-
-        <p>Discounted Cash Flow (DCF) — terminal value (Gordon Growth):</p>
-        <p class="fragment">\[\text{TV} = \dfrac{FCF_{n+1}}{r - g}\]</p>
-
-        <p class="fragment">Where: \(r\) = discount rate, \(g\) = perpetual growth rate.</p>
+        <h2>Financial Formula: Return on Equity (ROE)</h2>
+        <p>We compute ROE using the standard formula:</p>
+        <p>\(\displaystyle ROE = \frac{Net\ Income}{Average\ Shareholders'\ Equity} \times 100\%\)</p>
+        <p>Example: If Net Income = \$50M and Average Equity = \$500M, then</p>
+        <p>\(\displaystyle ROE = \frac{50}{500} \times 100\% = 10\%\)</p>
         <aside class="notes">
-          Walk through the DCF intuition and the sensitivity to discount rate r. Use this to highlight assumptions for valuation.
+          Walk through components and why shareholders watch ROE.
         </aside>
       </section>
 
-      <!-- Closing slide with call to action -->
+      <!-- Slide using fragments with a chart placeholder (you can embed a chart later) -->
+      <section>
+        <h2>Quarterly Trend (placeholder)</h2>
+        <p class="fragment">Q1 — \$120M</p>
+        <p class="fragment">Q2 — \$125M</p>
+        <p class="fragment">Q3 — \$135M</p>
+        <aside class="notes">
+          Replace placeholders with Chart.js or an embedded image for final deliverable.
+        </aside>
+      </section>
+
+      <!-- Closing slide -->
       <section>
         <h2>Questions & Next Steps</h2>
-        <ul>
-          <li class="fragment">Deep-dive analytics with dataset access</li>
-          <li class="fragment">Rollout roadmap for automation</li>
-          <li class="fragment">Request: stakeholder feedback via email</li>
-        </ul>
-        <p>Contact: <strong>23f2004606@ds.study.iitm.ac.in</strong></p>
+        <p>Please direct follow-ups to <strong>23f2004606@ds.study.iitm.ac.in</strong></p>
         <aside class="notes">
-          Encourage stakeholders to send data access requests or questions to the provided email. Offer 1:1 follow-ups.
+          Close by summarizing action items and who owns them.
         </aside>
       </section>
 
@@ -125,33 +120,24 @@ print(f"Forecast revenue (Q9): ${model.predict(next_q)[0]:.2f}M")
   </div>
 
   <!-- Reveal.js and plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/markdown/markdown.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/notes/notes.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/math/math.js"></script>
-  <!-- Add the Reveal.js highlight plugin so RevealHighlight is defined -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4/plugin/highlight/highlight.js"></script>
-  <!-- Highlight.js library (used by the plugin) -->
+  <script src="https://unpkg.com/reveal.js@4/dist/reveal.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
   <script>
-    // Initialize Reveal with the correct plugins. RevealHighlight is provided by the highlight plugin.
+    // Initialize Reveal
     Reveal.initialize({
       hash: true,
-      plugins: [ RevealMarkdown, RevealNotes, RevealMath, RevealHighlight ],
-      math: {
-        // mathjax configuration (use default CDN)
-        mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
-      },
-      // highlight integration: the plugin will auto-run highlight.js on code blocks
-      highlight: {
-        highlightOnLoad: true
-      }
+      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
+      slideNumber: true
     });
   </script>
-  <!-- Global footer with email (always visible) -->
-  <div class="global-email" style="position: fixed; bottom: 5px; left: 10px; font-size: 0.8rem; opacity: 0.75; z-index: 9999;">
-    Contact: <strong>23f2004606@ds.study.iitm.ac.in</strong>
-  </div>
+
+  <!-- Load Reveal plugins from CDN (must be after reveal.js) -->
+  <script src="https://unpkg.com/reveal.js@4/plugin/markdown/markdown.esm.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/plugin/highlight/highlight.esm.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/plugin/notes/notes.esm.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/plugin/math/math.esm.js"></script>
+
 </body>
 </html>
