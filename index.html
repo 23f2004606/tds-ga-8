@@ -12,7 +12,7 @@
   <!-- Highlight.js for code highlighting -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
 
-  <!-- Optional: KaTeX for math rendering (Reveal.js math plugin uses KaTeX) -->
+  <!-- KaTeX for math rendering (used by the math plugin) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
 
   <style>
@@ -22,8 +22,10 @@
       bottom: 12px;
       right: 18px;
       font-size: 0.85rem;
-      opacity: 0.85;
+      opacity: 0.95;
     }
+    /* Make code blocks wrap nicely on small screens */
+    pre code { white-space: pre-wrap; word-break: break-word; }
   </style>
 </head>
 <body>
@@ -46,8 +48,8 @@
         <textarea data-template>
 ## Executive Summary (Markdown slide)
 
-- **Revenue:** \$X million (YoY +Y%)
-- **Net Income:** \$Z million
+- **Revenue:** $X million (YoY +Y%)
+- **Net Income:** $Z million
 - **Key drivers:** Loan growth, fee income, cost control
 
 > This slide demonstrates using **Markdown** inside Reveal.js.
@@ -68,19 +70,26 @@
         </aside>
       </section>
 
-      <!-- Slide with code sample -->
+      <!-- Slide with code sample + extra test cases -->
       <section>
         <h2>Sample: Simple Revenue Growth Calculation (Python)</h2>
+        <p>Function and example test cases (expected outputs shown in comments):</p>
         <pre><code class="hljs language-python">def revenue_growth(prev, curr):
-    """Return revenue growth rate as a percentage."""
+    """Return revenue growth rate as a percentage (float rounded to 2 decimals).
+
+    Returns None if previous value is zero (undefined growth).
+    """
     if prev == 0:
         return None
-    return (curr - prev) / prev * 100
+    return round((curr - prev) / prev * 100, 2)
 
+# Test cases
 print(revenue_growth(120_000_000, 135_000_000))  # => 12.5
+print(revenue_growth(100, 110))                  # => 10.0
+print(revenue_growth(0, 50))                     # => None (undefined)
 </code></pre>
         <aside class="notes">
-          Explain that this snippet shows the simple growth formula used in our internal models.
+          Explain that this snippet shows the simple growth formula used in our internal models and includes small tests.
         </aside>
       </section>
 
@@ -88,8 +97,8 @@ print(revenue_growth(120_000_000, 135_000_000))  # => 12.5
       <section>
         <h2>Financial Formula: Return on Equity (ROE)</h2>
         <p>We compute ROE using the standard formula:</p>
-        <p>\(\displaystyle ROE = \frac{Net\ Income}{Average\ Shareholders'\ Equity} \times 100\%\)</p>
-        <p>Example: If Net Income = \$50M and Average Equity = \$500M, then</p>
+        <p>\(\displaystyle ROE = \frac{\text{Net\ Income}}{\text{Average\ Shareholders'\ Equity}} \times 100\%\)</p>
+        <p>Example: If Net Income = $50M and Average Equity = $500M, then</p>
         <p>\(\displaystyle ROE = \frac{50}{500} \times 100\% = 10\%\)</p>
         <aside class="notes">
           Walk through components and why shareholders watch ROE.
@@ -99,9 +108,9 @@ print(revenue_growth(120_000_000, 135_000_000))  # => 12.5
       <!-- Slide using fragments with a chart placeholder (you can embed a chart later) -->
       <section>
         <h2>Quarterly Trend (placeholder)</h2>
-        <p class="fragment">Q1 — \$120M</p>
-        <p class="fragment">Q2 — \$125M</p>
-        <p class="fragment">Q3 — \$135M</p>
+        <p class="fragment">Q1 — $120M</p>
+        <p class="fragment">Q2 — $125M</p>
+        <p class="fragment">Q3 — $135M</p>
         <aside class="notes">
           Replace placeholders with Chart.js or an embedded image for final deliverable.
         </aside>
@@ -119,25 +128,50 @@ print(revenue_growth(120_000_000, 135_000_000))  # => 12.5
     </div>
   </div>
 
-  <!-- Reveal.js and plugins -->
+  <!-- Reveal.js core script (UMD) -->
   <script src="https://unpkg.com/reveal.js@4/dist/reveal.js"></script>
+  <!-- Load Reveal plugins (UMD builds) BEFORE initializing Reveal -->
+  <script src="https://unpkg.com/reveal.js@4/plugin/markdown/markdown.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@4/plugin/math/math.js"></script>
+
+  <!-- Highlight.js itself (used by the highlight plugin) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <!-- KaTeX for math rendering (the math plugin will use this) -->
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
   <script>
-    // Initialize Reveal
+    // Defensive check: ensure Reveal and plugins are available
+    if (!window.Reveal) {
+      console.error('Reveal.js failed to load. Check the script path.');
+    }
+
+    // Initialize Reveal AFTER plugin scripts have been loaded
     Reveal.initialize({
       hash: true,
-      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ],
-      slideNumber: true
+      plugins: [
+        window.RevealMarkdown,
+        window.RevealHighlight,
+        window.RevealNotes,
+        window.RevealMath
+      ],
+      slideNumber: true,
+      // Optional settings useful for a stakeholder presentation
+      transition: 'fade',
+      slideNumber: 'c/t',
+      math: {
+        katex: {
+          // KaTeX options can be provided here if required
+        }
+      }
     });
-  </script>
 
-  <!-- Load Reveal plugins from CDN (must be after reveal.js) -->
-  <script src="https://unpkg.com/reveal.js@4/plugin/markdown/markdown.esm.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/plugin/highlight/highlight.esm.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/plugin/notes/notes.esm.js"></script>
-  <script src="https://unpkg.com/reveal.js@4/plugin/math/math.esm.js"></script>
+    // If highlight.js is available globally, run a fallback highlight pass
+    if (window.hljs && window.hljs.highlightAll) {
+      try { window.hljs.highlightAll(); } catch (e) { /* ignore */ }
+    }
+  </script>
 
 </body>
 </html>
